@@ -1,0 +1,11 @@
+{
+  "name": "caesarcli",
+  "version": "1.0.0",
+  "dependencies": {
+    "commander": "^6.1.0",
+    "through2": "4.0.2"
+  },
+  "devDependencies": {
+    "jasmine-node": "^3.0.0"
+  }
+}

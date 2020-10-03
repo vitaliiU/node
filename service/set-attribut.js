@@ -4,12 +4,20 @@ const program = new Command();
 
 module.exports = function () {
   //set attributes
-  program.version("6.1.0");
+  program.storeOptionsAsProperties(false).passCommandToAction(false);
   program
     .option("-s, --shift <shift-number>", "a shift")
-    .option("-a, --actions <actions-name>", "an actions encode/decode")
     .option("-i, --input <input-file>", "an input file")
     .option("-o, --output <output-file>", "an output file");
+
+  program
+    // .command("show")
+    .option('-a, --action <actions-name>", "an actions encode/decode')
+    .action((options) => {
+      // console.log(options.action);
+    });
+
   program.parse(process.argv);
-  return program;
+  const programOptions = program.opts();
+  return programOptions;
 };

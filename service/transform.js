@@ -4,12 +4,14 @@ const through2 = require("through2");
 
 const cipher = require("../cipher");
 
-module.exports = function (output, actions, shift) {
-  let str_to_append = fs.readFileSync(output, "utf8") + "\n";
+module.exports = function (actions, shift) {
   let through_opts = { decodeStrings: false, encoding: "utf8" };
   let chunk_handler = function (chunk, enc, next) {
-    this.push(str_to_append);
-
+    if (actions === "encode") {
+      this.push("Encoding result >> ");
+    } else {
+      this.push("Decoding result >> ");
+    }
     for (let i = 0; i < chunk.length; i++) {
       if (actions === "encode") {
         chunk[i] = cipher.getEncodeChar(chunk[i], shift);
@@ -21,7 +23,7 @@ module.exports = function (output, actions, shift) {
     next(null, chunk);
   };
   let finish_handler = function (done) {
-    // this.push(str_to_append);
+    this.push("\n");
     done();
   };
   let through_stream = through2.ctor(

@@ -1,5 +1,3 @@
-// node app -a encode -s 3 -i ./io/input.txt -o ./io/output.txt
-
 const fs = require("fs");
 const { Readable } = require("stream");
 const readline = require("readline");
@@ -43,10 +41,13 @@ notValid(input, output).then((message) => {
     }
     process.exit(1); // return a nonzero exit code
   } else if (action !== "encode" && action !== "decode") {
-    console.error("Failed! Actions value isn't valid.\n");
+    console.error("Failed! Action value isn't valid.\n");
+    process.exit(1); // return a nonzero exit code
+  } else if (!Number.isInteger(parseInt(shift))) {
+    console.error("Failed! Shift value isn't integer.\n");
     process.exit(1); // return a nonzero exit code
   }
-
+  // Number.isInteger(y / x)
   //check optional parametrs
   else {
     const transform = transformReq(action, shift);
@@ -62,34 +63,6 @@ notValid(input, output).then((message) => {
         () => console.log("Output file's writed successfully.\n"),
         (error) => console.error("Output file isn't writed. " + error.message)
       );
-      ///////////////////////////////////////////////////////////////////
-      // async function run() {
-      //   await pipeline(
-      //     fs.createReadStream("input.txt"),
-      //     through_stream(),
-      //     fs.createWriteStream("output.txt")
-      //   );
-      //   console.log("Pipeline succeeded.");
-      // }
-      // run().catch(console.error);
-      //////////////////////////////////////////////////////////////////
-      // const getTransformStream = (shift, action) => {
-      //   return new Transform({
-      //     transform(chunk, encoding, callback) {
-      //       this.push(caesarMachine(chunk, shift, action));
-      //       callback();
-      //     }
-      //   });
-      // };
-
-      // const buildTransformPipeline = options =>
-      //   pipeline(
-      //     getReadStream(options.input),
-      //     getTransformStream(options.shift, options.action),
-      //     getWriteStream(options.output),
-      //     err => handleErrors(err, options)
-      //   );
-      ///////////////////////////////////////////////////////////////////
 
       //when valid only input files
     } else if (input && !output) {

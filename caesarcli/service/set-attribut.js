@@ -11,7 +11,6 @@ module.exports = function () {
     .option("-o, --output <output-file>", "an output file");
 
   program
-    // .command("show")
     .option('-a, --action <actions-name>", "an actions encode/decode')
     .action((options) => {
       // console.log(options.action);

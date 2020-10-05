@@ -2,16 +2,16 @@
 
 ## Table of contents
 
-- [General info](##general-info)
-- [Technologies](##technologies)
-- [Setup](##setup)
-- [Using](##using)
-- [Comands examples](###comands-examples)
-- [Cases using application](###cases-using-application)
-- [Case using input file && output files](####case-using-input-file-&&-output-files)
-- [Case using only input file](####case-using-only-input-file)
-- [Case using only output file](####case-using-only-output-file)
-- [Case using only terminal](####case-using-only-terminal)
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Using](#using)
+- [Comands examples](#comands-examples)
+- [Cases using application](#cases-using-application)
+- [Case using input file && output files](#case-using-input-file-&&-output-files)
+- [Case using only input file](#case-using-only-input-file)
+- [Case using only output file](#case-using-only-output-file)
+- [Case using only terminal](#case-using-only-terminal)
 
 ## General info
 
